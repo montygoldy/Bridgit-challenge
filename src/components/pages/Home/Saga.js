@@ -4,7 +4,7 @@ import mainActions from "./Actions";
 
 function* createEntrySaga(action) {
   try {
-    yield put(mainActions.createEntrySuccess());
+    yield put(mainActions.createEntrySuccess(action.payload.data));
   } catch (error) {
     yield put(mainActions.createEntryErrors(error));
   }

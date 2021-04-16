@@ -15,15 +15,16 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-
     // Create
     case constants.CREATE_ENTRY_REQUEST:
       return {
         ...state,
       }
-    case constants.CREATE_ENTRY_SUCCESS:
+      case constants.CREATE_ENTRY_SUCCESS:
+      console.log("action.payload", action.payload.value)
       return {
         ...state,
+        entryById: {}
       }
 
     case constants.CREATE_ENTRY_ERRORS:

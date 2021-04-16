@@ -7,6 +7,12 @@ const theme = createMuiTheme({
       main: '#0076ff',
     }
   },
+  typography: {
+    fontFamily: [
+      'Raleway',
+      'sans-serif',
+    ].join(','),
+    }
 });
 
 export default theme;

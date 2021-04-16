@@ -12,7 +12,7 @@ i18n
             loadPath: `${process.env.PUBLIC_URL}/i18n/{{lng}}.json`,
         },
 
-        fallbackLng: "default",
+        fallbackLng: "en",
         debug: false,
 
         // have a common namespace used around the full app

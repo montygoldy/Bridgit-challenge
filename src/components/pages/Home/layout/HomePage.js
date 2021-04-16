@@ -6,6 +6,7 @@ import mainActions from "../Actions";
 
 // Lib
 import Helmet from "react-helmet";
+import uuid from 'react-uuid'
 
 // Components
 import CreateEntryForm from "../presentation/CreateEntryForm";
@@ -15,12 +16,51 @@ import EntryTable from "../presentation/EntryTable";
 import i18n from '../../../../i18n';
 
 class HomePage extends Component {
+  state = {
+    formInput: {}
+  }
+
+  handleOnChange = (e) => {
+    const { formInput } = this.state;
+    const { name, value } = e.target;
+    
+    this.setState({ 
+      formInput: {
+        ...formInput,
+        [name]: value
+      }
+    })
+  }
+
+  handleAddOnClick = () => {
+    const { formInput } = this.state;
+
+    formInput['id'] = uuid(); 
+
+    this.props.createEntryRequest(formInput);
+  }
+
+  // handleOnKeyPress = (e) => {
+  //   const { formInput } = this.state;
+  //   // Add a check to make sure form is not empty
+  //   if (e.key === 'Enter' && formInput) {
+  //     this.handleAddOnClick();
+  //   }
+  // }
+
   render() {
+    const { formInput } = this.state;
+
     return (
       <>
         <Helmet title={i18n.t("page-title")} />
 
-        <CreateEntryForm />
+        <CreateEntryForm 
+          handleAddOnClick={this.handleAddOnClick} 
+          handleOnChange={this.handleOnChange}  
+          formInput={formInput}   
+        />
+
         <EntryTable />
       </>
     );
