@@ -1,17 +1,63 @@
-import React from 'react';
-import './App.css';
-import logo from './images/bridgitb-w.svg';
+import React, { Component } from 'react';
 
-const App = () => (
-  <>
-    <header className="app-header">
-      <img src={logo} alt="logo" />
-      <div className="app-header-title">Bridgit - Frontend code challenge</div>
-    </header>
-    <section className="app-content">
-      {/* Add your implementation here */}
-    </section>
-  </>
-);
+// Lib
+import axios from 'axios';
+
+// Utils
+import i18n from './i18n';
+
+// Components
+import HomePage from "./components/pages/Home/layout/HomePage";
+import Header from "./components/reusable/Header";
+
+// Styles
+import './styles/css/main.css';
+
+class App extends Component {
+  state = {
+    isReady: false,
+  }
+
+  componentDidMount = () =>  {
+    let startup = [];
+
+    startup.push(new Promise((resolve, reject) => {
+      axios.get(`${process.env.PUBLIC_URL}/config/config.json`).then(function (res) {
+        window.config = res.data;
+        resolve();
+      });
+    }));
+   
+    startup.push(new Promise((resolve, reject) => {
+      i18n.on('initialized', function() { 
+        resolve();
+      });
+    }));
+   
+    return Promise.all(startup).then(() => {
+      this.setState({ isReady: true })
+    })
+  }
+  
+  render () {
+
+    const {
+      isReady
+    } = this.state;
+
+    if (!isReady) {
+      return "";
+    }
+
+    return (
+      <>
+        <Header />
+        <main>
+          <HomePage />
+        </main>
+      </>
+    )
+  }
+}
 
 export default App;
