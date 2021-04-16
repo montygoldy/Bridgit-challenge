@@ -1,12 +1,19 @@
 import React from "react";
 
-// Services
-// import i18n from '../../../../i18n';
+// Components
+import CustomTable from "../../../reusable/CustomTable";
 
-const EntryTable = () => {
+// Services
+import i18n from '../../../../i18n';
+
+const EntryTable = ({ tableData }) => {
   return (
     <section className="entry-table-section">
-      EntryTable
+      <h3>{ i18n.t("entry_table__title") }</h3>
+      
+      <CustomTable 
+        tableData={tableData}
+      />
     </section>
   );
 }
