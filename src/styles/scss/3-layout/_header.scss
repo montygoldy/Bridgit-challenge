@@ -4,19 +4,24 @@
   display: flex;
   align-items: center;
   color: #FFF;
-}
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 0 24px;
 
-.app-header img {
-  height: 40px;
-  margin-left: 16px;
-  color: mistyrose;
-}
+  .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 36px;
 
-.app-header-title {
-  margin-left: 16px;
-  font-size: 1.2em;
-}
+    img {
+      height: 40px;
+      color: mistyrose;
+    }
 
-.app-content {
-  margin: 16px;
+    .app-header-title {
+      margin-left: 16px;
+      font-size: 1.2em;
+    }
+  }
 }

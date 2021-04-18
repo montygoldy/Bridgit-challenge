@@ -26,7 +26,6 @@ function* createEntrySaga(action) {
 
 function* getEntriesSaga(action) {
   try {
-    
     // Get Cached Data 
     let getlocalCategory = action.payload.category || localStorage.getItem("showByCategory");
     let localData = localStorage.getItem("entryList");

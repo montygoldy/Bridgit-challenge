@@ -1,0 +1,48 @@
+.text-field {
+  background: #fff;
+
+  @include respond(phone) {
+    margin-bottom: 18px !important;
+    width: 100%;
+  }
+
+  label {
+    font-size: 16px !important;
+    font-weight: 600;
+  }
+
+  legend {
+    font-size: 1.15em;
+    max-width: 1000px;
+  }
+
+  input {
+    font-size: 14px;
+
+    &::placeholder {
+      color: #000 !important;
+      opacity: 1 !important;
+    }
+  }
+
+  svg {
+    font-size: 24px;
+  }
+
+  .custom-select {
+    >div {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 1;
+    }
+
+    .placeholder-item {
+      font-weight: 300;
+    }
+  }
+
+  .MuiInputAdornment-positionStart p {
+    font-size: 14px;
+  }
+}

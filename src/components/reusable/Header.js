@@ -9,8 +9,10 @@ import logo from '../../images/bridgitb-w.svg';
 const Header = () => {
   return (
     <header className="app-header">
-      <img src={logo} alt="logo" />
-      <div className="app-header-title">{i18n.t("header__title")}</div>
+      <div className="left-side">
+        <img src={logo} alt="logo" />
+        <div className="app-header-title">{i18n.t("header__title")}</div>
+      </div>
     </header>
   );
 }

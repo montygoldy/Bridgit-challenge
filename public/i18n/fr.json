@@ -1,0 +1,23 @@
+{
+    "page-title": "Page d'accueil",
+    "header__title": "Bridgit - Frontend code challenge",
+    "clear__text": "Effacer les données",
+    "create_form__title": "Créer un formulaire",
+    "create_form__item_input_label": "Article",
+    "create_form__item_input_name": "Article",
+    "create_form__item_input_placeholder": "Entrez le nom de l'article",
+    "create_form__category_input_label": "Catégorie",
+    "create_form__category_input_name": "Catégorie",
+    "create_form__category_input_placeholder": "Choisir une catégorie",
+    "create_form__price_input_label": "Prix",
+    "create_form__price_input_name": "Prix",
+    "create_form__price_input_placeholder": "Entrez le prix",
+    "create_form__add_button": "Ajouter une entrée",
+    "entry_table__title": "Table d'entrée",
+    "entry_table__item_column_heading_text": "Article",
+    "entry_table__category_column_heading_text": "Catégorie",
+    "entry_table__price_column_heading_text": "Prix ($)",
+    "entry_table__actions_text": "Actions",
+    "entry_table__no_records_text":"Aucun enregistrement trouvé",
+    "entry_table__filter_input_name":"filtre"
+}

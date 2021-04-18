@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Lib
 import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Utils
 import i18n from './i18n';
@@ -15,7 +16,7 @@ import './styles/css/main.css';
 
 class App extends Component {
   state = {
-    isReady: false,
+    isReady: false
   }
 
   componentDidMount = () =>  {
@@ -34,19 +35,19 @@ class App extends Component {
       });
     }));
    
-    return Promise.all(startup).then(() => {
-      this.setState({ isReady: true })
+    return Promise.all(startup).then(() => {  
+      this.setState({ isReady: true });
     })
   }
-  
+
   render () {
 
     const {
-      isReady
+      isReady,
     } = this.state;
 
     if (!isReady) {
-      return "";
+      return <div className="page"><CircularProgress /></div>;
     }
 
     return (

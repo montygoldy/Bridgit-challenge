@@ -19,47 +19,53 @@ const CreateEntryForm = ({ handleAddOnClick, onKeyPress, handleOnChange, formInp
       <div className="header-section">
         <h3>{ i18n.t("create_form__title") }</h3>
 
-        <CustomButton 
-          hasIcon={false}
-          onClick={handleClearOnClick}
-          text={i18n.t("clear__text")}
-        />
+        {
+          window.config.allow_clearing
+          &&
+          <CustomButton 
+            hasIcon={false}
+            onClick={handleClearOnClick}
+            text={i18n.t("clear__text")}
+          />
+        }
       </div>
 
-      <Paper>
+      <Paper className="form-box">
         <form noValidate autoComplete="off">
-          <CustomInput 
-            value={formInput[`${i18n.t("create_form__item_input_name")}`]}
-            name={i18n.t("create_form__item_input_name")}
-            label={i18n.t("create_form__item_input_label")}
-            placeholder={i18n.t("create_form__item_input_placeholder")}
-            handleOnChange={handleOnChange}
-            hasIcon={false}
-            required={true}
-            isNumberFormat={false}
-          />
+          <div className="input-section">
+            <CustomInput 
+              value={formInput[`${i18n.t("create_form__item_input_name")}`]}
+              name={i18n.t("create_form__item_input_name")}
+              label={i18n.t("create_form__item_input_label")}
+              placeholder={i18n.t("create_form__item_input_placeholder")}
+              handleOnChange={handleOnChange}
+              hasIcon={false}
+              required={true}
+              isNumberFormat={false}
+            />
 
-          <CustomSelect 
-            value={formInput[i18n.t("create_form__category_input_name")]}
-            name={i18n.t("create_form__category_input_name")}
-            label={i18n.t("create_form__category_input_label")}
-            placeholder={i18n.t("create_form__category_input_placeholder")}
-            handleOnChange={handleOnChange}
-            selectOptions={selectOptions}
-            displayEmpty={true}
-          />
+            <CustomSelect 
+              value={formInput[i18n.t("create_form__category_input_name")]}
+              name={i18n.t("create_form__category_input_name")}
+              label={i18n.t("create_form__category_input_label")}
+              placeholder={i18n.t("create_form__category_input_placeholder")}
+              handleOnChange={handleOnChange}
+              selectOptions={selectOptions}
+              displayEmpty={true}
+            />
 
-          <CustomInput 
-            value={formInput[`${i18n.t("create_form__price_input_name")}`]}
-            name={i18n.t("create_form__price_input_name")}
-            label={i18n.t("create_form__price_input_label")}
-            placeholder={i18n.t("create_form__price_input_placeholder")}
-            handleOnChange={handleOnChange}
-            hasIcon={true}
-            icon={'$'}
-            required={true}
-            isNumberFormat={true}
-          />
+            <CustomInput 
+              value={formInput[`${i18n.t("create_form__price_input_name")}`]}
+              name={i18n.t("create_form__price_input_name")}
+              label={i18n.t("create_form__price_input_label")}
+              placeholder={i18n.t("create_form__price_input_placeholder")}
+              handleOnChange={handleOnChange}
+              hasIcon={true}
+              icon={'$'}
+              required={true}
+              isNumberFormat={true}
+            />
+          </div>
 
           <CustomButton 
             hasIcon={true}

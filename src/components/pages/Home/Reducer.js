@@ -1,8 +1,8 @@
 import constants from "./Types";
 
 const initialState = {
-  categories: ["all", "fruit", "vegetables"],
-  showByCategory: "all",
+  categories: [],
+  showByCategory: "",
   entryList: [],
   errors: {},
   sortOrder: "asc",
@@ -12,8 +12,10 @@ const initialState = {
 };
 
 const mainReducer = (state = initialState, action) => {
-
+  let tempCategories = Object.assign([], state.categories);
+  
   switch (action.type) {
+
     // Create
     case constants.CREATE_ENTRY_SUCCESS:
       return {
@@ -29,8 +31,10 @@ const mainReducer = (state = initialState, action) => {
     
     // GET
     case constants.GET_ENTRIES_REQUEST:
+      
       return {
         ...state,
+        categories: tempCategories.length ? tempCategories : window.config.categories,
         isLoading: true
       }
 

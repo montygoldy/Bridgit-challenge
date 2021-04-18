@@ -16,14 +16,19 @@ const EntryTable = ({ tableCategories, tableData, handleRowActions, isLoading, h
     <section className="entry-table-section">
       <div className="header-section">
         <h3>{ i18n.t("entry_table__title") }</h3>
+
+        {
+          window.config.allow_filtering
+          &&
+          <CustomSelect 
+            value={showByCategory}
+            name={i18n.t("create_form__category_input_name")}
+            handleOnChange={handleOnChange}
+            selectOptions={selectOptions}
+            displayEmpty={false}
+          />
+        }
         
-        <CustomSelect 
-          value={showByCategory}
-          name={i18n.t("create_form__category_input_name")}
-          handleOnChange={handleOnChange}
-          selectOptions={selectOptions}
-          displayEmpty={false}
-        />
       </div>
       
       {
@@ -39,6 +44,7 @@ const EntryTable = ({ tableCategories, tableData, handleRowActions, isLoading, h
           requestSort={(category) => requestSort(category)}
           sortOrder={sortOrder}
           sortBy={sortBy}
+          rowActions={window.config.table_row_action}
         />
       }
     </section>

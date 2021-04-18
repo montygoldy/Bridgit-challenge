@@ -1,7 +1,6 @@
 import React from "react";
 
 // Lib
-import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,28 +11,18 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import uuid from 'react-uuid';
 
 // Services
 import i18n from "../../i18n";
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: '#fff',
-    color: '#000',
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const CustomTable = ({ tableCategories, tableData, handleRowActions, sorting_blacklist, sortBy, sortOrder, requestSort }) => {
-  const classes = useStyles();
+const CustomTable = ({ tableCategories, tableData, handleRowActions, sorting_blacklist, sortBy, sortOrder, requestSort, rowActions }) => {
 
   return (
     <Paper>
       <TableContainer>
-        <Table className={classes.table} aria-label="entry table">
+        <Table className="custom-table" aria-label="entry table">
           <TableHead>
             <TableRow>
               {
@@ -41,21 +30,21 @@ const CustomTable = ({ tableCategories, tableData, handleRowActions, sorting_bla
                   let tempCell;
 
                   // Check the blacklisted items
-                  sorting_blacklist.includes(category)
+                  sorting_blacklist.includes(category.label)
                   ?
-                  tempCell = <StyledTableCell key={uuid()}>
-                      {category}
-                  </StyledTableCell>
+                  tempCell = <TableCell key={uuid()}>
+                      {i18n.t(category.value)}
+                  </TableCell>
                   :
-                  tempCell = <StyledTableCell key={uuid()}>
+                  tempCell = <TableCell key={uuid()}>
                     <TableSortLabel
-                      active={sortBy === category}
+                      active={sortBy === category.label}
                       direction={sortOrder}
-                      onClick={() => requestSort(category)}
+                      onClick={() => requestSort(category.label)}
                     >
-                      {category}
+                      {i18n.t(category.value)}
                     </TableSortLabel>
-                  </StyledTableCell>;
+                  </TableCell>;
 
                   return tempCell;
                 })
@@ -70,26 +59,40 @@ const CustomTable = ({ tableCategories, tableData, handleRowActions, sorting_bla
                 {
                   tableData.map((item) => (
                     <TableRow key={item.id}>
-                      <StyledTableCell>
+                      <TableCell>
                         {item.item}
-                      </StyledTableCell>
-                      <StyledTableCell>{item.category}</StyledTableCell>
-                      <StyledTableCell>{item.price}</StyledTableCell>
-                      <StyledTableCell> 
-                        <IconButton 
-                          color="primary" 
-                          component="span"
-                          onClick={() => handleRowActions(item.id)}
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                      </StyledTableCell>
+                      </TableCell>
+                      <TableCell>{item.category}</TableCell>
+                      <TableCell>{item.price}</TableCell>
+                      <TableCell> 
+                        {
+                          rowActions.map((actionItem, i) => (
+                            <IconButton 
+                              key={i}
+                              className="row-action-button"
+                              component="span"
+                              onClick={() => handleRowActions(actionItem, item.id)}
+                            >
+                              {
+                                actionItem === "DELETE"
+                                &&
+                                <DeleteIcon />
+                              }
+                              {
+                                actionItem === "UPDATE"
+                                &&
+                                <EditIcon />
+                              }
+                            </IconButton>
+                          ))
+                        }
+                      </TableCell>
                     </TableRow>
                   ))
                 }
               </>
               :
-              <TableRow><StyledTableCell>{i18n.t("entry_table__no_records_text")}</StyledTableCell></TableRow>
+              <TableRow><TableCell>{i18n.t("entry_table__no_records_text")}</TableCell></TableRow>
             }
           </TableBody>
         </Table>
@@ -97,11 +100,5 @@ const CustomTable = ({ tableCategories, tableData, handleRowActions, sorting_bla
     </Paper>
   );
 }
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
 
 export default CustomTable;

@@ -1,4 +1,16 @@
 {   
-    "sorting_blacklist": ["Actions"],
-    "show_pagination": true
+    "categories": ["all", "fruit", "vegetables"],
+    "allow_clearing": true,
+    "allow_filtering": true,
+    "sorting_blacklist": ["actions"],
+    "table_categories": [{
+        "label": "item", "value": "entry_table__item_column_heading_text"
+    }, {
+        "label": "category", "value": "entry_table__category_column_heading_text"
+    }, {
+        "label": "price", "value": "entry_table__price_column_heading_text"
+    }, {
+        "label": "actions", "value": "entry_table__actions_text"
+    }],
+    "table_row_action": ["DELETE"]
 }
