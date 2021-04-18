@@ -11,14 +11,14 @@ html {
 }
 
 body {
-  font-family: $primary-font;
+  font-family: $secondary-font;
   box-sizing: border-box;
   font-size: 1.4rem;
   color: $text-color-dark;
   background-color: $bg-color;
   line-height: 1.4;
   letter-spacing: 1px;
-  width: 100vw;
+  width: 100%;
 }
 
 #root {
@@ -30,20 +30,26 @@ body {
 
 h1,
 h2,
-h3 {
-  font-weight: 700;
+h3,
+h4,
+h5,
+h6 {
+  font-family: $primary-font;
 }
 
 h1 {
   font-size: 5rem;
+  font-weight: 700;
 }
 
 h2 {
   font-size: 4rem;
+  font-weight: 700;
 }
 
 h3 {
   font-size: 3rem;
+  font-weight: 700;
 }
 
 h4 {
@@ -83,8 +89,21 @@ main {
   width: 100%;
   margin: 48px auto;
   padding: 0 48px;
+
+  @include respond(phone) {
+    margin: 24px auto;
+    padding: 0 24px;
+  }
 }
 
 .MuiSelect-selectMenu {
   text-transform: capitalize;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

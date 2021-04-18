@@ -3,7 +3,6 @@ import React from "react";
 // Lib
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { makeStyles } from '@material-ui/core/styles';
 import NumberFormat from 'react-number-format';
 
 function NumberFormatCustom(props) {
@@ -30,11 +29,9 @@ function NumberFormatCustom(props) {
 
 const CustomInput = ({ hasIcon, icon, value, handleOnChange, label, placeholder, name, required, isNumberFormat }) => {
 
-  const classes = useStyles();
-
   return (
     <TextField
-      className={classes.input}
+      className="text-field"
       name={name}
       placeholder={placeholder}
       label={label}
@@ -60,13 +57,5 @@ const CustomInput = ({ hasIcon, icon, value, handleOnChange, label, placeholder,
     />
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  input: {
-    fontSize: 16,
-    // paddingTop: 16.5,
-    // paddingBottom: 16.5
-  }
-}));
 
 export default CustomInput;

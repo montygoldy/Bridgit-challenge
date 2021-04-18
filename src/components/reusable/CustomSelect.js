@@ -10,10 +10,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const CustomSelect = ({ value, handleOnChange, label, placeholder, selectOptions, name, displayEmpty }) => {
 
   const classes = useStyles();
-
+ 
   return (
-
-    <FormControl variant="outlined" className={classes.formControl}>
+    <FormControl variant="outlined" className={`${classes.formControl} text-field`}>
       {
         label
         &&
@@ -22,7 +21,7 @@ const CustomSelect = ({ value, handleOnChange, label, placeholder, selectOptions
 
       <Select
         displayEmpty={displayEmpty}
-        className={classes.input}
+        className={`${classes.input} custom-select`}
         name={name}
         placeholder={placeholder}
         label={label}
@@ -33,12 +32,12 @@ const CustomSelect = ({ value, handleOnChange, label, placeholder, selectOptions
         {
           placeholder
           &&
-          <MenuItem className={classes.menuItem} value="">
+          <MenuItem className={`${classes.menuItem} placeholder-item`} value="">
             {placeholder}
           </MenuItem>
         }
         { 
-          (selectOptions && selectOptions.length)
+          (selectOptions && selectOptions.length >= 1)
           &&
           selectOptions.map((option) => (
             <MenuItem className={classes.menuItem} key={option} value={option}>
@@ -53,11 +52,11 @@ const CustomSelect = ({ value, handleOnChange, label, placeholder, selectOptions
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
     minWidth: 120,
   },
   menuItem: {
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    fontSize: 14
   }
 }));
 

@@ -5,11 +5,14 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#0076ff',
+    },
+    secondary: {
+      main: '#000',
     }
   },
   typography: {
     fontFamily: [
-      'Raleway',
+      'Montserrat',
       'sans-serif',
     ].join(','),
     }

@@ -19,12 +19,7 @@ class HomePage extends Component {
   state = {
     formInput: {},
     formIsInvalid: true,
-    tableCategories: [
-      i18n.t("create_form__item_input_label"),
-      i18n.t("create_form__category_input_label"),
-      i18n.t("create_form__price_input_label"),
-      i18n.t("entry_table__actions_text")
-    ]
+    tableCategories: window.config.table_categories,
   }
 
   componentDidMount = () => {
@@ -108,6 +103,10 @@ class HomePage extends Component {
     if (actionType === "DELETE") {
       this.props.deleteEntryRequest(id)
     }
+
+    if (actionType === "UPDATE") {
+      // DO Something
+    }
   }
 
   // Clear Data Action
@@ -150,7 +149,6 @@ class HomePage extends Component {
       }
     }
 
-
     this.handleGetEntries(showByCategory, tempSortBy, tempOrder); 
   }
 
@@ -162,7 +160,7 @@ class HomePage extends Component {
     const tempSelectOptions = categories.filter((item) => item !== "all");
 
     return (
-      <>
+      <div className="homepage">
         <Helmet title={i18n.t("page-title")} />
         
         <CreateEntryForm 
@@ -187,7 +185,7 @@ class HomePage extends Component {
           sortOrder={sortOrder}
           sortBy={sortBy}
         />
-      </>
+      </div>
     );
   }
 }
