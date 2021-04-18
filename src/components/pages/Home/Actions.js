@@ -9,10 +9,10 @@ const mainActions = {
     }
   }),
 
-  createEntrySuccess: value => ({
+  createEntrySuccess: entryList => ({
     type: constants.CREATE_ENTRY_SUCCESS,
     payload: {
-      value
+      entryList
     }
   }),
 
@@ -24,17 +24,22 @@ const mainActions = {
   }),
 
   //GET Entries
-  getEntriesRequest: (category) => ({
+  getEntriesRequest: (category, sortBy, sortOrder) => ({
     type: constants.GET_ENTRIES_REQUEST,
     payload: {
-      category
+      category,
+      sortBy, 
+      sortOrder
     }
   }),
 
-  getEntriesSuccess: value => ({
+  getEntriesSuccess: (category, sortBy, sortOrder, entryList) => ({
     type: constants.GET_ENTRIES_SUCCESS,
     payload: {
-      value
+      category,
+      sortBy, 
+      sortOrder,
+      entryList
     }
   }),
 
@@ -53,15 +58,34 @@ const mainActions = {
     }
   }),
 
-  deleteEntrySuccess: value => ({
+  deleteEntrySuccess: entryList => ({
     type: constants.DELETE_ENTRY_SUCCESS,
     payload: {
-      value
+      entryList
     }
   }),
 
   deleteEntryErrors: errors => ({
     type: constants.DELETE_ENTRY_ERRORS,
+    payload: {
+      errors
+    }
+  }),
+
+
+  //Clear Entries
+  resetEntriesRequest: () => ({
+    type: constants.CLEAR_ENTRIES_REQUEST,
+    payload: {}
+  }),
+
+  resetEntriesSuccess: () => ({
+    type: constants.CLEAR_ENTRIES_SUCCESS,
+    payload: {}
+  }),
+
+  resetEntriesErrors: errors => ({
+    type: constants.CLEAR_ENTRIES_ERRORS,
     payload: {
       errors
     }

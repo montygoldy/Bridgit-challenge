@@ -4,7 +4,7 @@ import React from "react";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-const CustomButton = ({ icon, onClick, text, disabled }) => {
+const CustomButton = ({ hasIcon, icon, onClick, onKeyPress, text, disabled }) => {
 
   const classes = useStyles();
 
@@ -13,8 +13,9 @@ const CustomButton = ({ icon, onClick, text, disabled }) => {
       variant="contained"
       color="primary"
       className={classes.button}
-      startIcon={icon}
+      startIcon={hasIcon && icon}
       onClick={onClick}
+      onKeyPress={onKeyPress}
       disabled={disabled}
       size="large"
     >

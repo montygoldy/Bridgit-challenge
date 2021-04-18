@@ -1,6 +1,7 @@
 {
     "page-title": "Home page",
     "header__title": "Bridgit - Frontend code challenge",
+    "clear__text": "Clear All",
     "create_form__title": "Create Form",
     "create_form__item_input_label": "Item",
     "create_form__item_input_name": "item",
@@ -12,5 +13,8 @@
     "create_form__price_input_name": "price",
     "create_form__price_input_placeholder": "Enter Price",
     "create_form__add_button": "Add Entry",
-    "entry_table__title": "Entry Table"
+    "entry_table__title": "Entry Table",
+    "entry_table__actions_text": "Actions",
+    "entry_table__no_records_text":"No records found",
+    "entry_table__filter_input_name":"filter"
 }
