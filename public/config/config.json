@@ -1,4 +1,4 @@
-{
-    "show_pagination": true,
-    "pagination_count": 10
+{   
+    "sorting_blacklist": ["Actions"],
+    "show_pagination": true
 }

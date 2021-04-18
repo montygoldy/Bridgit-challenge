@@ -3,44 +3,61 @@ import React from "react";
 // Lib
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
+import NumberFormat from 'react-number-format';
 
-const CustomInput = ({ hasIcon, icon, value, handleOnChange, label, placeholder, isSelect, selectOptions, disabled }) => {
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      isNumericString
+      decimalScale={2}
+    />
+  );
+}
+
+const CustomInput = ({ hasIcon, icon, value, handleOnChange, label, placeholder, name, required, isNumberFormat }) => {
 
   const classes = useStyles();
 
   return (
     <TextField
       className={classes.input}
-      name={label}
+      name={name}
       placeholder={placeholder}
       label={label}
       id={label}
-      defaultValue={value}
+      value={value || ""}
       onChange={handleOnChange}
       InputLabelProps={{
         shrink: true,
       }}
-      InputProps={{ 
-        startAdornment: hasIcon && <InputAdornment position="start">{icon}</InputAdornment>
-      }}
-      variant="outlined"
-      select={isSelect}
-      SelectProps={{
-        native: true,
-      }}
-    >
-      {
-        (isSelect && selectOptions && selectOptions.length)
-        &&
-        selectOptions.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))
+      InputProps={
+        isNumberFormat 
+        ? 
+        { 
+          startAdornment: hasIcon && <InputAdornment position="start">{icon}</InputAdornment>,
+          inputComponent: NumberFormatCustom
+        } 
+        : 
+        {
+          startAdornment: hasIcon && <InputAdornment position="start">{icon}</InputAdornment>
+        }
       }
-    </TextField>
+      variant="outlined"
+    />
   );
 }
 

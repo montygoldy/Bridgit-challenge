@@ -1,19 +1,46 @@
 import React from "react";
 
+// Lib
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // Components
 import CustomTable from "../../../reusable/CustomTable";
+import CustomSelect from "../../../reusable/CustomSelect";
 
 // Services
 import i18n from '../../../../i18n';
 
-const EntryTable = ({ tableData }) => {
+const EntryTable = ({ tableCategories, tableData, handleRowActions, isLoading, handleOnChange, showByCategory, selectOptions, requestSort, sortOrder, sortBy }) => {
+  
   return (
     <section className="entry-table-section">
-      <h3>{ i18n.t("entry_table__title") }</h3>
+      <div className="header-section">
+        <h3>{ i18n.t("entry_table__title") }</h3>
+        
+        <CustomSelect 
+          value={showByCategory}
+          name={i18n.t("create_form__category_input_name")}
+          handleOnChange={handleOnChange}
+          selectOptions={selectOptions}
+          displayEmpty={false}
+        />
+      </div>
       
-      <CustomTable 
-        tableData={tableData}
-      />
+      {
+        isLoading
+        ?
+        <CircularProgress />
+        :
+        <CustomTable 
+          tableCategories={tableCategories}
+          tableData={tableData}
+          handleRowActions={(actionType, id) => handleRowActions(actionType, id)}
+          sorting_blacklist={window.config.sorting_blacklist}
+          requestSort={(category) => requestSort(category)}
+          sortOrder={sortOrder}
+          sortBy={sortBy}
+        />
+      }
     </section>
   );
 }
