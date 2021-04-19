@@ -10,7 +10,7 @@ const sortingFunc = (data, sortBy, sortOrder) => {
 function* createEntrySaga(action) {
   try {
     // 1. Get the Cache List
-    let localData = JSON.parse(localStorage.getItem("entryList"));
+    let localData = JSON.parse(localStorage.getItem("entryList")) || [];
 
     // 2.Update the Cache List
     localData = [action.payload.data, ...localData];
