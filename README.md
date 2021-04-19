@@ -11,12 +11,12 @@
 
 ### ADD and DELETE Entry + CLEAR DATA
 
-!["Screen shot for Add and delete entry"]()
+!["Screen shot for Add and delete entry"](https://github.com/montygoldy/Bridgit-challenge/blob/main/gifs/create_delete.gif?raw=true)
 
 ### FILTER and SORT Entries
 
-!["Screen shot for filter and sort entries"]()
+!["Screen shot for filter and sort entries"](https://github.com/montygoldy/Bridgit-challenge/blob/main/gifs/filter_sort.gif?raw=true)
 
 ### CONFIGURABILITY
 
-!["Screen shot for Configurability"]()
+!["Screen shot for Configurability"](https://github.com/montygoldy/Bridgit-challenge/blob/main/gifs/config.gif?raw=true)
