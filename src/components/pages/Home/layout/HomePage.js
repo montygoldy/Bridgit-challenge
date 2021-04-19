@@ -38,7 +38,12 @@ class HomePage extends Component {
 
   handleOnChange = (e) => {
     const { formInput } = this.state;
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+
+    // Pad the single digit price entry with 0 for better sorting
+    if (name === "price" && value) {
+      value = value.length > 1 ? value : value.padStart(2, '0')
+    }
 
     this.setState({ 
       formInput: {
